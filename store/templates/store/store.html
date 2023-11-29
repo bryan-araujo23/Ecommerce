@@ -1,8 +1,10 @@
 <!--Página inicial/frente da loja com todos os produtos-->
 
+{% extends 'store/main.html' %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-<h3>Store</h3>
+{% block content %}
 
-<img src="{% static 'images/cart.png' %}" alt="">
+    <h3>Store</h3>
+    
+{% endblock content %}
