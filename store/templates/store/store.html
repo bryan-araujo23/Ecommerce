@@ -5,6 +5,53 @@
 
 {% block content %}
 
-    <h3>Store</h3>
+    <div class="row"> <!--linha-->
+
+        <div class="col-lg-4"> <!-- divisão que vai ocupar 4 colunas-->
+
+            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+
+            <div class="box-element product">
+                <h6>Product</h6>
+                <hr>
+
+                <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+                <a class="btn btn-outline-success" href="#">View</a>
+                <h4 style="display: inline-block; float: right">20</h4>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4"> <!-- divisão que vai ocupar 4 colunas-->
+
+            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+
+            <div class="box-element product">
+                <h6>Product</h6>
+                <hr>
+
+                <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+                <a class="btn btn-outline-success" href="#">View</a>
+                <h4 style="display: inline-block; float: right">15</h4>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4"> <!-- divisão que vai ocupar 4 colunas-->
+
+            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+
+            <div class="box-element product">
+                <h6>Product</h6>
+                <hr>
+
+                <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+                <a class="btn btn-outline-success" href="#">View</a>
+                <h4 style="display: inline-block; float: right">10</h4>
+            </div>
+
+        </div>
+
+    </div>            <!--linha-->
     
 {% endblock content %}
