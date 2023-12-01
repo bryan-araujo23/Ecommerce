@@ -15,8 +15,13 @@ class Customer(models.Model):#Cliente
 
     def __str__(self):
         return self.name
+    
 
 
+ # transformar um método de uma classe em uma propriedade,
+ # permitindo que você acesse esse método como se fosse um atributo.
+ # Isso significa que você pode chamar o método sem usar parênteses. 
+@property 
 class Product(models.Model):#Produto
     """
     O modelo do produto representa os produtos que temos em loja.
@@ -24,9 +29,17 @@ class Product(models.Model):#Produto
     name = models.CharField(max_length=200)
     price = models.FloatField()
     digital = models.BooleanField(default=False, null=True, blank=True) # Se o produto é digital ou fisíco
+    image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+    
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
 
 
 class Order(models.Model):#Ordem(um pedido será o resumo do pedido dos itens. Carrinho)

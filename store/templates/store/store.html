@@ -10,14 +10,14 @@
         {% for product in products %}
         <div class="col-lg-4"> <!-- divisão que vai ocupar 4 colunas-->
 
-            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+            <img class="thumbnail" src="{{ product.imageURL }}"> <!--função como atributo(property)-->
 
             <div class="box-element product">
                 <h6>{{product.nome}}</h6>
                 <hr>
 
-                <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
-                <a class="btn btn-outline-success" href="#">View</a>
+                <button class="btn btn-primary add-btn">Add to Cart</button>
+                <a class="btn btn-success" href="#">View</a>
                 <h4 style="display: inline-block; float: right">${{product.price|floatformat:2}}</h4>
             </div>
 

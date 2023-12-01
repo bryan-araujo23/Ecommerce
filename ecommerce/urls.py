@@ -16,7 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+ #  A função static() é usada para mapear URLs para os arquivos estáticos no seu projeto Django.
+ # Esses arquivos são "estáticos" porque não são gerados dinamicamente pelo servidor em cada solicitação,
+ #  mas são servidos diretamente ao cliente.
+
+from django.conf.urls.static import static
+
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store.urls'))
+    path('', include('store.urls')) 
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
