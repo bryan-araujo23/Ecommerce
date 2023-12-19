@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+import json
+import datetime
 from .models import *
 
 
@@ -36,6 +38,10 @@ def checkout(request):
 	context = {'items':items, 'order':order}
 	return render(request, 'store/checkout.html', context)
 
+
+def processOrder(request):
+	transaction_id = datetime.datetime.now().timestamp()
+	return JsonResponse('Payment subbmitted..', safe=False)
 
 def updateItem(request):
 	return JsonResponse('Item was added', safe=False)
