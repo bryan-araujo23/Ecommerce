@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-import json
+from django.http import JsonResponse  # é parte do módulo django.http para retornar respostas HTTP no formato JSON
+import json  # módulo json que permite funçãoes para trabalhar com dados json  como serialização e desserialização.
 import datetime
 from .models import *
 
@@ -41,6 +41,17 @@ def checkout(request):
 
 def processOrder(request):
 	transaction_id = datetime.datetime.now().timestamp()
+	data = json.loads(request.body)
+
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+		total = float(data['form']['total'])
+		order = transaction_id = transaction_id
+	else:
+		print('User is not logged in')
+	return JsonResponse()
+
 	return JsonResponse('Payment subbmitted..', safe=False)
 
 def updateItem(request):
