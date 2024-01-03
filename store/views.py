@@ -3,6 +3,7 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import * 
+from .utils import cookieCart
 
 def store(request):
 
@@ -41,7 +42,7 @@ def cart(request):
 		cartItems = order['get_cart_items']
 
 		for i in cart:
-			
+
 			try:
 				cartItems += cart[i]['quantity']
 
