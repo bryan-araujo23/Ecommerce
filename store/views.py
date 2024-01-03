@@ -43,8 +43,16 @@ def cart(request):
 		for i in cart:
 			cartItems += cart[i]['quantity']
 
+			product = Product.objects.get(id=i)
+			total = (product.price * cart[i]['quantity'])
+
+			order['get_cart_total'] += total
+			order['get_cart_items'] += cart[i]['quantity']
+
+
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/cart.html', context)
+
 
 def checkout(request):
 	if request.user.is_authenticated:
@@ -60,6 +68,7 @@ def checkout(request):
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/checkout.html', context)
+
 
 def updateItem(request):
 	data = json.loads(request.body)
