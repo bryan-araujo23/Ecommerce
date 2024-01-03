@@ -49,10 +49,20 @@ def cart(request):
 			order['get_cart_total'] += total
 			order['get_cart_items'] += cart[i]['quantity']
 
+			item = {
+				'id':product.id,
+				'product':{'id':product.id,'name':product.name, 'price':product.price, 
+				'imageURL':product.imageURL}, 'quantity':cart[i]['quantity'],
+				'digital':product.digital,'get_total':total,
+				}
+			items.append(item)
+
+			if product.digital == False:
+				order['shipping'] = True
+
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/cart.html', context)
-
 
 def checkout(request):
 	if request.user.is_authenticated:
@@ -68,7 +78,6 @@ def checkout(request):
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/checkout.html', context)
-
 
 def updateItem(request):
 	data = json.loads(request.body)
