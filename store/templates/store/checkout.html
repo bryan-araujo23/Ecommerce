@@ -151,6 +151,9 @@
 			.then((data) => {
 				console.log('Success:', data);
 				alert('Transaction completed');  
+
+				cart = {}
+				document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/" // é um método em JavaScript que converte um objeto JavaScript ou um valor para uma string JSON. 
 				window.location.href = "{% url 'store' %}"
 
 				})
