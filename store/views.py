@@ -7,7 +7,7 @@ from .utils import cookieCart, cartData, guestOrder
 
 def store(request):
 	data = cartData(request)
-	
+
 	cartItems = data['cartItems']
 	order = data['order']
 	items = data['items']
@@ -27,17 +27,15 @@ def cart(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/cart.html', context)
 
-
 def checkout(request):
 	data = cartData(request)
-
+	
 	cartItems = data['cartItems']
 	order = data['order']
 	items = data['items']
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/checkout.html', context)
-
 
 def updateItem(request):
 	data = json.loads(request.body)
@@ -63,7 +61,6 @@ def updateItem(request):
 		orderItem.delete()
 
 	return JsonResponse('Item was added', safe=False)
-
 
 def processOrder(request):
 	transaction_id = datetime.datetime.now().timestamp()
